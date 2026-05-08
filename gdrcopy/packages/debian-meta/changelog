@@ -1,0 +1,144 @@
+gdrcopy (@FULL_VERSION@) stable; urgency=low
+
+  * See CHANGELOG.md.
+
+ -- GPUDirect Team <gpudirect@nvidia.com>  Mon, 04 Aug 2025 11:59:59 -0700
+
+gdrcopy (2.5.1) stable; urgency=low
+
+  * Support RHEL 10.0.
+  * Support CUDA 13.0.
+  * Support the CDMM mode.
+  * Support Blackwell.
+  * Fix errors when compiling with CUDA 12.6.
+
+ -- GPUDirect Team <gpudirect@nvidia.com>  Mon, 04 Aug 2025 11:59:59 -0700
+
+gdrcopy (2.5) stable; urgency=low
+
+  * Introduce gdr_pin_buffer_v2 API, GDR_PIN_FLAG_FORCE_PCIE pin flag and the GDR_ATTR_SUPPORT_PIN_FLAG_FORCE_PCIE attribute. Extend gdrcopy_sanity coverage to those new APIs.
+  * Waive some unit tests in gdrcopy_sanity if the GPU compute mode is not set as default.
+  * Introduce gdr_get_attribute API and GDR_ATTR_USE_PERSISTENT_MAPPING.
+  * Add persistent mapping coverage to gdrcopy_sanity.
+  * Support setting GPU ID in gdrcopy_sanity.
+  * Fix nvidia_p2p_get_pages_persistent leakage in gdrdrv.
+  * Introduce leakage_pin_pages_fork_cumemalloc unit test.
+  * Add support for mix mappings.
+  * Introduce /proc/driver/gdrdrv/params and /proc/driver/gdrdrv/nv_get_pages_refcount.
+  * Fix silent failure in gdrcopy_copybw and gdrcopy_apiperf.
+  * Add -l to shmoo sizes in gdrcopy_copybw.
+  * Set the default NVCC_FLAGS to generate PTX and SASS for all supported architectures.
+  * Improve the error reporting in gdrcopy_pplat due to PTX loading errors.
+  * Add cold cache testing to gdrcopy_copylat.
+  * Fix errors in gdr_map due to PAT.
+  * Improve the gdrcopy_pplat algorithm and add more test cases.
+  * Improve vm_flags_set detection mechanism.
+  * Change the default to set use_persistent_mapping=1.
+
+ -- GPUDirect Team <gpudirect@nvidia.com>  Fri, 21 Mar 2025 11:59:59 -0700
+
+gdrcopy (2.4.4) stable; urgency=low
+
+  * Fix the use-after-free bug of mr objects in gdrdv_vma_close.
+  * Fix the resource leakage bug in gdrdrv_release.
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Mon, 16 Dec 2024 11:59:59 -0700
+
+gdrcopy (2.4.3) stable; urgency=low
+
+  * Fix NVIDIA_IS_OPENSOURCE detection when compile with NVIDIA driver version 545 or newer.
+  * Fix compile error in gdrdrv when compile on RHEL9.5.
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Mon, 02 Dec 2024 11:59:59 -0700
+
+gdrcopy (2.4.2) stable; urgency=low
+
+  * Fix the size alignment bug in gdrdrv.
+  * Fix memory leak in gdr_pin_buffer.
+  * Add support for another flavor of BF3.
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Thu, 31 Oct 2024 11:59:59 -0700
+
+gdrcopy (2.4.1) stable; urgency=low
+
+  * Add support for persistent mapping.
+  * Fix bug in src/gdrdrv/Makefile.
+  * Fix compile-time bug when check.h is not found.
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Mon, 18 Dec 2023 11:59:59 -0700
+
+gdrcopy (2.4) stable; urgency=low
+
+  * Various bug fixes in the test and benchmark applications.
+  * Prefix all applications with "gdrcopy_".
+  * Introduce more unit tests in gdrcopy_sanity.
+  * Introduce gdrcopy_pplat benchmark application.
+  * Remove dependency on libcheck and libsubunit
+  * Introduce gdr_get_info_v2.
+  * Introduce new copy algorithm for device mappings.
+  * Add support for NVIDIA BLUEFIELD-3.
+  * Add support for Linux kernel >= 6.3.
+  * Relicense gdrdrv to Dual MIT/GPL.
+  * Fix bugs in gdrdrv when pinning two small buffers back-to-back.
+  * Add support for coherent platforms such as Grace-Hopper.
+  * Add support for Confidential Computing (CC).
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Fri, 01 Sep 2023 11:59:59 -0700
+
+gdrcopy (2.3.1) stable; urgency=low
+
+  * Add a workaround for the GPL-compatibility issue when compile with CONFIG_ARCH_HAS_CC_PLATFORM on Linux kernel 5.18+.
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Mon, 12 May 2023 11:59:59 -0700
+
+gdrcopy (2.3) stable; urgency=low
+
+  * Convert to meta package.
+  * Declare dependency with gdrdrv-dkms, libgdrapi, and gdrcopy-tests.
+  * Update the package maintainer.
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Mon, 23 Jul 2021 11:59:59 -0700
+
+gdrcopy (2.2) stable; urgency=low
+
+  * Add support for ARM64.
+  * Update various information on README.
+  * Improve Makefile.
+  * Add multi-arch support.
+  * Handle removal of HAVE_UNLOCKED_IOCTL in Linux kernel v5.9 and later.
+  * Prevent dpkg package creation to unnecessarily compile gdrdrv.
+  * Improve gdr_open error message.
+  * Fix bug that prevents sanity from correctly summarizing failure.
+  * Add dkms support in kmod package.
+  * Handle the removal of kzfree in Linux kernel v5.10 and later.
+  * Improve small-size copy-to-mapping.
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Mon, 01 Feb 2021 11:59:59 -0700
+
+gdrcopy (2.1) stable; urgency=low
+
+  * fix build problem on RHL8 kernels
+  * relax checks in gdrdrv to support multi-threading use cases
+  * fix fd leak in gdr_open()
+  * Introduce copylat test application.
+  * Introduce basic_with_tokens and invalidation_fork_child_gdr_pin_parent_with_tokens sub-tests in sanity.
+  * Remove the dependency with libcudart.so.
+  * Clean up the code in the tests folder.
+  * Change the package maintainer to Davide Rossetti.
+
+ -- Davide Rossetti <drossetti@nvidia.com>  Mon, 02 Mar 2020 11:59:59 -0700
+
+gdrcopy (2.0) stable; urgency=low
+
+  * Improve copy performance with unrolling in POWERPC.
+  * Create sanity unit test for testing the functionality and security.
+  * Consolidate basic and validate into sanity unit test.
+  * Introduce compile time and runtime version checking in libgdrapi.
+  * Improve rpm packaging.
+  * Introduce deb packaging for the userspace library and the applications.
+  * Introduce dkms packaging for the gdrdrv driver.
+  * Rename gdr_copy_from/to_bar to gdr_copy_from/to_mapping.
+  * Update README
+
+ -- Pak Markthub <pmarkthub@nvidia.com>  Mon, 16 Sep 2019 11:59:59 -0700
+

@@ -1,0 +1,85 @@
+# 构建产物
+build/
+build_root/
+*.o
+*.so
+*.a
+bin/
+lib/
+
+# benchmarks 构建产物  
+benchmarks/*/build/
+benchmarks/*/build_root/
+benchmarks/*/results/
+benchmarks/*/__pycache__/
+
+# 临时和日志文件
+*.log
+debug.log
+
+# 忽略不需要跟踪的目录
+asplosaoe/
+deprecated/
+demos/
+cccl/
+FragPicker/
+storage/
+scripts/
+
+# 忽略实验文件
+*.pdf
+*.png
+*.csv
+*.zip
+*.bin
+*.aux
+*.tex
+*.lua
+*.md.old
+!BaM并发机制.md
+!EXPERIMENT_REPORT.md
+_markdown_*
+exp*.png
+exp*.csv
+L_knee
+target
+coding-agent.zip
+mdtest.markdown.out
+
+# benchmarks 下只保留指定的三个目录
+benchmarks/array/
+benchmarks/bfs/
+benchmarks/block/
+benchmarks/cache/
+benchmarks/cc/
+benchmarks/iodepth-block/
+benchmarks/pagerank/
+benchmarks/pattern/
+benchmarks/readwrite/
+benchmarks/reduction/
+benchmarks/scan/
+benchmarks/sssp/
+benchmarks/sssp_float/
+benchmarks/vectoradd/
+benchmarks/read_data_bw_tune/
+benchmarks/read_data_single_2mb/
+benchmarks/read_data_max_iosize/
+benchmarks/write_data_fill/
+benchmarks/zero_vs_data_read/
+benchmarks/trim_range/
+benchmarks/bam_data_conversion.py
+
+# benchmarks 下的实验脚本和数据文件
+benchmarks/*.tsv
+benchmarks/*.sh
+benchmarks/read_data_bw/
+benchmarks/reports/
+
+# FAST27: keep burst_evict benchmark tracked
+!benchmarks/burst_evict/
+!benchmarks/burst_evict/CMakeLists.txt
+!benchmarks/burst_evict/main.cu
+# burst_evict 下只跟踪源码，忽略实验脚本和数据
+benchmarks/burst_evict/*.txt
+benchmarks/burst_evict/*.py
+benchmarks/burst_evict/*.sh
